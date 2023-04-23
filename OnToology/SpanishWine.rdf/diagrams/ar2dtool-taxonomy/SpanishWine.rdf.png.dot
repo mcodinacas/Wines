@@ -1,0 +1,19 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "SpanishWine:GranReservaWine" "SpanishWine:SemiDry" "SpanishWine:AlcoholicBeverage" "SpanishWine:CrianzaWine" "SpanishWine:ReservaWine" "SpanishWine:JovenWine" "SpanishWine:Beer" "SpanishWine:RedWine" "SpanishWine:Dry" "SpanishWine:SweetWine" "SpanishWine:WhiteWine" "SpanishWine:FermentedBeverage" "SpanishWine:DistilledBeverage" "SpanishWine:NonAlcoholicBeverage" "SpanishWine:Beverage" "SpanishWine:Wine" ; /*classes style*/
+	"SpanishWine:JovenWine" -> "SpanishWine:RedWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:NonAlcoholicBeverage" -> "SpanishWine:Beverage" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:SweetWine" -> "SpanishWine:WhiteWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:GranReservaWine" -> "SpanishWine:RedWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:AlcoholicBeverage" -> "SpanishWine:Beverage" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:Wine" -> "SpanishWine:FermentedBeverage" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:DistilledBeverage" -> "SpanishWine:AlcoholicBeverage" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:CrianzaWine" -> "SpanishWine:RedWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:FermentedBeverage" -> "SpanishWine:AlcoholicBeverage" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:SemiDry" -> "SpanishWine:WhiteWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:ReservaWine" -> "SpanishWine:RedWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:Dry" -> "SpanishWine:WhiteWine" [ label = "rdfs:subClassOf" ];
+	"SpanishWine:Beer" -> "SpanishWine:FermentedBeverage" [ label = "rdfs:subClassOf" ];
+
+}

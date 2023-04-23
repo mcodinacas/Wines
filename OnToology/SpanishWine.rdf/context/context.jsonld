@@ -1,0 +1,157 @@
+{
+  "@context" : {
+    "DistilledBeverage" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#DistilledBeverage"
+    },
+    "hasPrice" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasPrice",
+      "@type" : "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    "hasRating" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasRating",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Winery" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Winery"
+    },
+    "FermentedBeverage" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#FermentedBeverage"
+    },
+    "Country" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Country"
+    },
+    "DarkGrapes" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#DarkGrapes"
+    },
+    "isRuleEnabled" : {
+      "@id" : "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"
+    },
+    "hasReviews" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasReviews",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "GranReservaWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#GranReservaWine"
+    },
+    "JovenWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#JovenWine"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "hasSIted" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasSIted",
+      "@type" : "@id"
+    },
+    "hasAcidity" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasAcidity",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Beer" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Beer"
+    },
+    "isSitedIn" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isSitedIn",
+      "@type" : "@id"
+    },
+    "hasSugarContentValue" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasSugarContentValue",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Beverage" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Beverage"
+    },
+    "timeFermentation" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#timeFermentation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "AlcoholicBeverage" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#AlcoholicBeverage"
+    },
+    "Grapes" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Grapes"
+    },
+    "isUsedToMature" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isUsedToMature",
+      "@type" : "@id"
+    },
+    "hasBody" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasBody",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "SemiDry" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#SemiDry"
+    },
+    "isMaturedIn" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isMaturedIn",
+      "@type" : "@id"
+    },
+    "Barrel" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Barrel"
+    },
+    "isRegionOf" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isRegionOf",
+      "@type" : "@id"
+    },
+    "hasIngredient" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasIngredient",
+      "@type" : "@id"
+    },
+    "WhiteWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#WhiteWine"
+    },
+    "NonAlcoholicBeverage" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#NonAlcoholicBeverage"
+    },
+    "produces" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#produces",
+      "@type" : "@id"
+    },
+    "isIngredientOf" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isIngredientOf",
+      "@type" : "@id"
+    },
+    "RoseWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RoseWine"
+    },
+    "Dry" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Dry"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "hasYear" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasYear",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "SweetWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#SweetWine"
+    },
+    "hasRegion" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasRegion",
+      "@type" : "@id"
+    },
+    "CrianzaWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#CrianzaWine"
+    },
+    "isProductedBy" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isProductedBy",
+      "@type" : "@id"
+    },
+    "Region" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Region"
+    },
+    "ReservaWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#ReservaWine"
+    },
+    "WhiteGrapes" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#WhiteGrapes"
+    },
+    "RedWine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RedWine"
+    },
+    "Wine" : {
+      "@id" : "http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Wine"
+    }
+  }
+}
