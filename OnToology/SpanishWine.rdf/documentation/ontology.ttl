@@ -1,0 +1,1035 @@
+@prefix : <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#> .
+
+<http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine> rdf:type owl:Ontology ;
+                                                                   rdfs:comment "Author: Miriam Codina Castillo"@en ,
+                                                                                "Autor: Miriam Codina Castillo"@es ,
+                                                                                "Nombre de la ontologia: SpanishWine"@es ,
+                                                                                "Ontology Name: SpanishWine"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isIngredientOf ;
+               rdfs:domain :Wine ;
+               rdfs:range :Grapes ;
+               rdfs:label "ingredient"@en ,
+                          "ingrediente"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasRegion
+:hasRegion rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isRegionOf ;
+           rdfs:domain :Country ;
+           rdfs:range :Region ;
+           rdfs:comment "Country is composed by different winery regions"@en ,
+                        "un país se compone de diferentes regiones vinícolas"@es ;
+           rdfs:label "region"@en ,
+                      "region"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasSIted
+:hasSIted rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isSitedIn ;
+          rdfs:domain :Region ;
+          rdfs:range :Winery ;
+          rdfs:comment "a region has sited wineries"@en ,
+                       "una región tiene situadas bodegas"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isIngredientOf
+:isIngredientOf rdf:type owl:ObjectProperty ;
+                rdfs:domain :Grapes ;
+                rdfs:range :Wine ;
+                rdfs:comment "Grapes are an ingredient of wine. Wine is made of one or different kinds of grapes"@en ,
+                             "Las uvas son un ingredente del vino. Un vino está hecho de uno o diferentes tipos de uva"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isMaturedIn
+:isMaturedIn rdf:type owl:ObjectProperty ;
+             owl:inverseOf :isUsedToMature ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :RedWine ;
+             rdfs:range :Barrel ;
+             rdfs:comment "Algunos vinos tintos se maceran en barrica"@es ,
+                          "Some kinds of red wine are madured in a barrel"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isProductedBy
+:isProductedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :produces ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :Wine ;
+               rdfs:range :Winery ;
+               rdfs:comment "El vino es producido por una bodega en particulr"@es ,
+                            "Wine is producted by a concret winery"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isRegionOf
+:isRegionOf rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Region ;
+            rdfs:range :Country ;
+            rdfs:comment "Cada región pertenece a un país"@es ,
+                         "Every region is a part of a country"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isSitedIn
+:isSitedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Winery ;
+           rdfs:range :Region ;
+           rdfs:comment "A winery is sited in a region"@en ,
+                        "Una bodega está situada en una región"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#isUsedToMature
+:isUsedToMature rdf:type owl:ObjectProperty ;
+                rdfs:domain :Barrel ;
+                rdfs:range :RedWine ;
+                rdfs:comment "barrells are used to madurate some kinds of red wine"@en ,
+                             "las barricas se usan en el proceso de maceración de algunos vinos tintos"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#produces
+:produces rdf:type owl:ObjectProperty ;
+          rdfs:domain :Winery ;
+          rdfs:range :Wine ;
+          rdfs:comment "Cada bodega produce uno o más vinos"@es ,
+                       "Winery produces one or different Wines"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasAcidity
+:hasAcidity rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Wine ;
+            rdfs:range xsd:integer ;
+            rdfs:comment "level of acidity (1-5)"@en ,
+                         "nivel de acidez (1-5)"@es ;
+            rdfs:label "acidez"@es ,
+                       "acidity"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasBody
+:hasBody rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Wine ;
+         rdfs:range xsd:integer ;
+         rdfs:label "body"@en ,
+                    "cuerpo"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasPrice
+:hasPrice rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Wine ;
+          rdfs:range xsd:decimal ;
+          rdfs:label "precio"@es ,
+                     "price"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasRating
+:hasRating rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Wine ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "puctuation obtained (1-5)"@en ,
+                        "puntuación obtenida por el vino (1-5)"@es ;
+           rdfs:label "puntuación"@es ,
+                      "rating"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasReviews
+:hasReviews rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Wine ;
+            rdfs:range xsd:integer ;
+            rdfs:label "review"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasSugarContentValue
+:hasSugarContentValue rdf:type owl:DatatypeProperty ,
+                               owl:FunctionalProperty ;
+                      rdfs:domain :WhiteWine ;
+                      rdfs:range xsd:integer ;
+                      rdfs:comment "level of sugar that white wine has"@en ,
+                                   "nivel de azúcar que tiene el vino"@es ;
+                      rdfs:label "azúcar"@es ,
+                                 "sugar"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#hasYear
+:hasYear rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Wine ;
+         rdfs:range xsd:integer ;
+         rdfs:label "cosecha"@es ,
+                    "year"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#timeFermentation
+:timeFermentation rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :RedWine ;
+                  rdfs:range xsd:integer ;
+                  rdfs:comment "meses que necesita de maceración el vino tinto"@es ,
+                               "months of fermentation that the red wine needs"@en ;
+                  rdfs:label "fermentation"@en ,
+                             "maceración"@es .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#AlcoholicBeverage
+:AlcoholicBeverage rdf:type owl:Class ;
+                   rdfs:subClassOf :Beverage ;
+                   owl:disjointWith :NonAlcoholicBeverage ;
+                   rdfs:comment "Bebidas que continen alcohol (etanol)"@es ,
+                                "Drink that contains alcohol (ethanol)"@en ;
+                   rdfs:label "Alcoholic Beverage"@en ,
+                              "Bebida con alcohol"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Barrel
+:Barrel rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isUsedToMature ;
+                                                     owl:someValuesFrom :CrianzaWine
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isUsedToMature ;
+                                                     owl:someValuesFrom :GranReservaWine
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isUsedToMature ;
+                                                     owl:someValuesFrom :ReservaWine
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isUsedToMature ;
+                                                     owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( :CrianzaWine
+                                                                                       :GranReservaWine
+                                                                                       :ReservaWine
+                                                                                     )
+                                                                       ]
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:comment "Cilyndrical container bulging out in the middle, traditionally made of wooden with metals hoops round them where wine is matured"@en ,
+                     "Recipiente cilíndrico abombado en el medio, tradicionalmente de madera con aros de metal alrededor, donde se madura el vino."@es ;
+        rdfs:label "Barrel"@en ,
+                   "Barrica"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Beer
+:Beer rdf:type owl:Class ;
+      rdfs:subClassOf :FermentedBeverage ;
+      owl:disjointWith :Wine ;
+      rdfs:comment "Beer come from cereals or other strach-containing products"@en ,
+                   "La cerveza proviene de cereales o otros productos que contienen almidón."@es ;
+      rdfs:label "beer"@en ,
+                 "cerveza"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Beverage
+:Beverage rdf:type owl:Class ;
+          rdfs:comment "All kind of beberage"@en ,
+                       "Todo tipo de bebida"@es ;
+          rdfs:label "bebida"@es ,
+                     "beverage"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Country
+:Country rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasRegion ;
+                               owl:someValuesFrom :Region
+                             ] ;
+         rdfs:comment "A nation with its own government occupying a particular territory"@en ,
+                      "Una nación con su propio gobierno, que ocupa un territorio particular"@es ;
+         rdfs:label "country"@en ,
+                    "país"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#CrianzaWine
+:CrianzaWine rdf:type owl:Class ;
+             rdfs:subClassOf :RedWine ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isMaturedIn ;
+                               owl:allValuesFrom :Barrel
+                             ] ;
+             owl:disjointWith :GranReservaWine ,
+                              :JovenWine ,
+                              :ReservaWine ;
+             rdfs:comment "Are those wines that have been aged for at least 24 months, of which between 6 and 12 have to be in barrels"@en ,
+                          "Son aquellos vinos que tienen un envejecimiento de 24 meses como mínimo, de los cuales entre 6 y 12 deben ser en barrica"@es ;
+             rdfs:label "crianza"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#DarkGrapes
+:DarkGrapes rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Grapes
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isIngredientOf ;
+                                                         owl:someValuesFrom :RedWine
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isIngredientOf ;
+                                                         owl:someValuesFrom :RoseWine
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :isIngredientOf ;
+                                                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( :RedWine
+                                                                                           :RoseWine
+                                                                                         )
+                                                                           ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            owl:disjointWith :WhiteGrapes ;
+            rdfs:comment "Uvas de color púrpura azulado intendo que las hace parecer casi negras"@es ;
+            rdfs:label "dark grapes"@en ,
+                       "uvas negras"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#DistilledBeverage
+:DistilledBeverage rdf:type owl:Class ;
+                   rdfs:subClassOf :AlcoholicBeverage ;
+                   owl:disjointWith :FermentedBeverage ;
+                   rdfs:comment "Alcohol comes from distillation, that is a process used to higher-ABV beverages from already-fermented base products"@en ,
+                                "El alcohol proviene de la destilación, que es un proceso que se usa para bebidas con ABV más alto a partir de productos base ya fermentados."@es ;
+                   rdfs:label "destilación"@es ,
+                              "distillation"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Dry
+:Dry rdf:type owl:Class ;
+     rdfs:subClassOf :WhiteWine ;
+     owl:disjointWith :SemiDry ,
+                      :SweetWine ;
+     rdfs:comment "All ther perceptible sugar in the grapes has been converted to alcohol during the fermentation"@en ,
+                  "todo el azúcar perceptible en las uvas se convierte en alcohol durante la fermentación"@es ;
+     rdfs:label "dry wine"@en ,
+                "vino seco"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#FermentedBeverage
+:FermentedBeverage rdf:type owl:Class ;
+                   rdfs:subClassOf :AlcoholicBeverage ;
+                   rdfs:comment "Alcohol comes from fermentation, that is the process of using yeast to convert sugars into alcohol"@en ,
+                                "El alcohol proviene de la fermentación, que es el proceso de usar levaduras para convertir azúcares en alcohol"@es ;
+                   rdfs:label "fermentación"@es ,
+                              "fermentation"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#GranReservaWine
+:GranReservaWine rdf:type owl:Class ;
+                 rdfs:subClassOf :RedWine ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isMaturedIn ;
+                                   owl:allValuesFrom :Barrel
+                                 ] ;
+                 owl:disjointWith :JovenWine ,
+                                  :ReservaWine ;
+                 rdfs:comment "Vinos con un tiempo de maduración mínimo de 60 meses (5 años), de los cuales generalmente 18 de ellos deben ser en barrica."@es ,
+                              "Wines with a minimum maduration time of 60 months (5 years), of which generally 18 of them have to be in barrels"@en ;
+                 rdfs:label "gran reserva"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Grapes
+:Grapes rdf:type owl:Class ;
+        rdfs:comment "Variedades de uva cultivadas para la producción de jugo, mosto, y/o vino"@es ,
+                     "grapes varieties normally grown for the production of juice, must and/or wine"@en ;
+        rdfs:label "grape"@es ,
+                   "grapes"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#JovenWine
+:JovenWine rdf:type owl:Class ;
+           rdfs:subClassOf :RedWine ;
+           owl:disjointWith :ReservaWine ;
+           rdfs:comment "Its consumption is recommended between two and six months from the harvest, up to 18 months"@en ,
+                        "Su consumo está recomendado entre los dos y los seis meses desde la vendimia, hasta los 18 meses"@es ;
+           rdfs:label "joven"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#NonAlcoholicBeverage
+:NonAlcoholicBeverage rdf:type owl:Class ;
+                      rdfs:subClassOf :Beverage ;
+                      rdfs:comment "Bebidas que no contienen alcohol (etanol)"@es ,
+                                   "Drink that doesn't contain alcohol (ethanol)"@en ;
+                      rdfs:label "bebida no alcoholica"@es ,
+                                 "non alcoholic beverage"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RedWine
+:RedWine rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Wine
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :hasIngredient ;
+                                                      owl:allValuesFrom :DarkGrapes
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :timeFermentation ;
+                                                      owl:someValuesFrom xsd:integer
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         owl:disjointWith :RoseWine ,
+                          :WhiteWine ;
+         rdfs:comment "vino elaborado con variedades de uva de color oscuro"@es ,
+                      "wine made from dark-colored grape varieties"@en ;
+         rdfs:label "red wine"@en ,
+                    "vino tinto"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Region
+:Region rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasSIted ;
+                                                     owl:someValuesFrom :Winery
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isRegionOf ;
+                                                     owl:someValuesFrom :Country
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isRegionOf ;
+                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass :Country
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:comment "Región vinícola significa, dentro de un mismo país: un estado, provincia, subdivisión territorial, o una zona vinícola delimitada"@es ,
+                     "Wine region means, within a single country: a state, province, territory or subdivision or a single subdivision grape growing area,"@en ;
+        rdfs:label "region"@en ,
+                   "region"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#ReservaWine
+:ReservaWine rdf:type owl:Class ;
+             rdfs:subClassOf :RedWine ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isMaturedIn ;
+                               owl:allValuesFrom :Barrel
+                             ] ;
+             rdfs:comment "Vinos cuoy periodo de envejecimiento debe ser de al menos 36 meses, con un mínimo de 12 en barrica y el resto en botella"@es ,
+                          "wines whose aging period must be at least 36 months, with a minimum of 12 in barrels, and the rest in the bottle"@en ;
+             rdfs:label "reserva"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RoseWine
+:RoseWine rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Wine
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasIngredient ;
+                                                       owl:someValuesFrom :DarkGrapes
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasIngredient ;
+                                                       owl:someValuesFrom :WhiteGrapes
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasIngredient ;
+                                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                           owl:unionOf ( :DarkGrapes
+                                                                                         :WhiteGrapes
+                                                                                       )
+                                                                         ]
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :isIngredientOf ;
+                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass :DarkGrapes
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :isIngredientOf ;
+                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass :WhiteGrapes
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          owl:disjointWith :WhiteWine ;
+          rdfs:comment "vino elaborado con uvas de vino tinto, y producido de manera similar, pero con un tiempo de fermentación reducido. Uvas con piel."@es ,
+                       "wine made from red wine grapes, produces in a similar manner to red wine, but with reduced time fermenting with grape skins"@en ;
+          rdfs:label "rose wine"@en ,
+                     "vino rosado"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#SemiDry
+:SemiDry rdf:type owl:Class ;
+         rdfs:subClassOf :WhiteWine ;
+         owl:disjointWith :SweetWine ;
+         rdfs:comment "Vino donde se deja un poco de azúcar residual, o se agrega, con el fin de obtener un sabor más afrutado"@es ,
+                      "Wine where some residual sugar is left to produce a wine more fruit forward"@en ;
+         rdfs:label "semi dry wine"@en ,
+                    "vino semi seco"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#SweetWine
+:SweetWine rdf:type owl:Class ;
+           rdfs:subClassOf :WhiteWine ;
+           rdfs:comment "Sufren un periodo de fermentación más corto y contienen más azúcar"@es ,
+                        "Sweet wines have undergone a shorter fermentation process and contain more sugar"@en ;
+           rdfs:label "sweet wine"@en ,
+                      "vino dulce"@es .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#WhiteGrapes
+:WhiteGrapes rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Grapes
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :isIngredientOf ;
+                                                          owl:someValuesFrom :RoseWine
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :isIngredientOf ;
+                                                          owl:someValuesFrom :WhiteWine
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :isIngredientOf ;
+                                                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                              owl:unionOf ( :RoseWine
+                                                                                            :WhiteWine
+                                                                                          )
+                                                                            ]
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+             rdfs:comment "Grapes green in colour"@en ,
+                          "Uvas de color verde"@es ;
+             rdfs:label "uvas blancas"@es ,
+                        "white grapes"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#WhiteWine
+:WhiteWine rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Wine
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasIngredient ;
+                                                        owl:allValuesFrom :WhiteGrapes
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasSugarContentValue ;
+                                                        owl:someValuesFrom xsd:integer
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:comment "vino hecho con uva blanca"@es ,
+                        "wine made from pale grapes"@en ;
+           rdfs:label "vino blanco"@es ,
+                      "white wine"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Wine
+:Wine rdf:type owl:Class ;
+      rdfs:subClassOf :FermentedBeverage ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isProductedBy ;
+                        owl:someValuesFrom :Winery
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isProductedBy ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Winery
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPrice ;
+                        owl:someValuesFrom xsd:decimal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasReviews ;
+                        owl:someValuesFrom xsd:integer
+                      ] ;
+      rdfs:comment "Los vinos se fermentan a partir de varios jugos de frutas, generalmente uvas,  que contienen azúcares fermentables"@es ,
+                   "Wines are fermented from various fruit juices, usually grapes, containing fermentable sugars"@en ;
+      rdfs:label "vino"@es ,
+                 "wine"@en .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Winery
+:Winery rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :isSitedIn ;
+                                                     owl:someValuesFrom :Region
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :produces ;
+                                                     owl:someValuesFrom :Wine
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:comment "lugar donde se hace el vino"@es ,
+                     "place where wine is made"@en ;
+        rdfs:label "bodega"@es ,
+                   "winery"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Albarino
+:Albarino rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#BlancPescador
+:BlancPescador rdf:type owl:NamedIndividual ;
+               :hasIngredient :Albarino ;
+               :hasSugarContentValue 22 .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Emporda
+:Emporda rdf:type owl:NamedIndividual ;
+         :hasSIted :MasLlunes .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Emporion
+:Emporion rdf:type owl:NamedIndividual ;
+          :isProductedBy :MasLlunes ;
+          :timeFermentation 48 .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Garnatxa
+:Garnatxa rdf:type owl:NamedIndividual ;
+          :isIngredientOf :BlancPescador ,
+                          :RosatdelsVents .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#MasDoix
+:MasDoix rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#MasLlunes
+:MasLlunes rdf:type owl:NamedIndividual ;
+           :produces :RosatdelsVents .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Merlot
+:Merlot rdf:type owl:NamedIndividual ;
+        :isIngredientOf :Emporion ,
+                        :RosatdelsVents .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Moscatel
+:Moscatel rdf:type owl:NamedIndividual ;
+          :isIngredientOf :BlancPescador .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#PetitVerdot
+:PetitVerdot rdf:type owl:NamedIndividual ;
+             :isIngredientOf :Unico .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#PinotNoir
+:PinotNoir rdf:type owl:NamedIndividual ;
+           :isIngredientOf :Unico .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Priorat
+:Priorat rdf:type owl:NamedIndividual ;
+         :hasSIted :MasDoix .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RiberaDeDuero
+:RiberaDeDuero rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RobleEspanol
+:RobleEspanol rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RobleFrances
+:RobleFrances rdf:type owl:NamedIndividual ;
+              :isUsedToMature :Emporion .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#RosatdelsVents
+:RosatdelsVents rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Spain
+:Spain rdf:type owl:NamedIndividual ;
+       :hasRegion :Emporda ,
+                  :Priorat ,
+                  :RiberaDeDuero .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#Unico
+:Unico rdf:type owl:NamedIndividual ;
+       :isMaturedIn :RobleEspanol ;
+       :timeFermentation 59 .
+
+
+###  http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine#VegaSicilia
+:VegaSicilia rdf:type owl:NamedIndividual ;
+             :isSitedIn :RiberaDeDuero ;
+             :produces :Unico .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isReserva" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :RedWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :timeFermentation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 35 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 60 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :ReservaWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isGranReserva" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :RedWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :timeFermentation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 60 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :GranReservaWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isDry" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :WhiteWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSugarContentValue ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 0 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 10 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Dry ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isSweet" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :WhiteWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSugarContentValue ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 19 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SweetWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isSemiDry" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :WhiteWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasSugarContentValue ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 9 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 20 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :SemiDry ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isJoven" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :RedWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :timeFermentation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 0 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 24 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :JovenWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "isCrianza" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :RedWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :timeFermentation ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x> ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y>
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                             <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                          rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first 23 ;
+                                                                                                                                     rdf:rest rdf:nil
+                                                                                                                                   ]
+                                                                                                                        ]
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#arguments> [ rdf:type rdf:List ;
+                                                                                                                                     rdf:first <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/y> ;
+                                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                rdf:first 36 ;
+                                                                                                                                                rdf:rest rdf:nil
+                                                                                                                                              ]
+                                                                                                                                   ]
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :CrianzaWine ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/miriam/ontologies/2023/3/SpanishWine/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
